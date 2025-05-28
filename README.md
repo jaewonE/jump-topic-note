@@ -4,6 +4,8 @@
 ![Release Date](https://img.shields.io/badge/Released-May%2028%2C%202025-green.svg)  
 ![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)
 
+![demo](https://github.com/jaewonE/jump-topic-note/blob/master/assets/demo.gif?raw=true)
+
 Jump Topic Note is an Obsidian community plugin that streamlines your note navigation by letting you jump to parent or “superior” topic notes directly from any note’s frontmatter. If your notes use a `parents` (or custom) YAML list to represent their hierarchical relationships, this plugin will save you countless clicks and keystrokes when traversing your knowledge graph.
 
 ---
