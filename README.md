@@ -1,94 +1,61 @@
-# Obsidian Sample Plugin
+# Jump Topic Note
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+![Obsidian Version](https://img.shields.io/badge/Obsidian-1.0%2B-blue.svg)  
+![Release Date](https://img.shields.io/badge/Released-May%2028%2C%202025-green.svg)  
+![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+Jump Topic Note is an Obsidian community plugin that streamlines your note navigation by letting you jump to parent or “superior” topic notes directly from any note’s frontmatter. If your notes use a `parents` (or custom) YAML list to represent their hierarchical relationships, this plugin will save you countless clicks and keystrokes when traversing your knowledge graph.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+---
 
-## First time developing plugins?
+## Why Jump Topic Note?
 
-Quick starting guide for new plugin devs:
+-   **Eliminate Manual Searches**  
+    Instead of opening the file explorer or using the global search to find your parent note, one keystroke instantly transports you there.
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+-   **Maintain Focus**  
+    Keep your hands on the keyboard and your train of thought uninterrupted by GUI navigation.
 
-## Releasing new releases
+-   **Flexible Hierarchies**  
+    Supports notes with zero, one, or multiple parent topics; automatically adapts to your frontmatter schema.
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+-   **Configurability**  
+    You decide which YAML property holds the parent-list, and you can override it on a per-vault basis.
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+---
 
-## Adding your plugin to the community plugin list
+## Core Features
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+| Scenario                    | Behavior                                                                   |
+| --------------------------- | -------------------------------------------------------------------------- |
+| **No parent entries**       | Does nothing (no notifications or errors).                                 |
+| **Single parent entry**     | Immediately opens the linked parent note.                                  |
+| **Multiple parent entries** | Pops up a searchable modal where you can select which parent note to open. |
 
-## How to use
+-   **Modal Selection**
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+    -   **Keyboard-friendly**: Arrow keys navigate, Enter confirms.
+    -   **Mouse-aware**: Hover highlights, click selects.
+    -   **Auto-focus**: First item is pre-selected when the modal opens.
 
-## Manually installing the plugin
+-   **Error Handling**
+    -   Non-list YAML → shows a Notice and logs details.
+    -   Non-wikilink entries in the list → warns you and logs the offending items.
+    -   Missing target file → warns you and logs the lookup failure.
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+---
 
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
+## Example Frontmatter
 
-## Funding URL
+Place a list of wikilinks under your chosen property (default: `parents`):
 
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
+```yaml
+---
+title: “Advanced Topic Note”
+created: 2025-05-28
+tags: [knowledge-hierarchy, obsidian-plugin]
+parents:
+    - "[[Topic A]]"
+    - "[[Folder/Topic B|Custom Alias]]"
+---
 ```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
-
-## API Documentation
-
-See https://github.com/obsidianmd/obsidian-api
