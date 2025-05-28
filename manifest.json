@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "jump-topic-note",
+	"name": "Jump Topic Note",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "상위 주제를 가지는 문서로 이동하는 Obsidian Plugin.",
+	"author": "JaewonE",
+	"authorUrl": "https://github.com/jaewonE",
 	"isDesktopOnly": false
 }

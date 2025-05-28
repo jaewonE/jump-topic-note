@@ -1,8 +1,35 @@
-/*
+/* Ensure consistent modal sizing similar to sample.ts */
+.selectable-modal .modal {
+	width: 25vw;
+	min-width: 250px; /* fallback for small monitors */
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+/* styles.css for Jump Topic Note plugin */
+.selectable-modal .selectable-item {
+	padding: 8px 10px;
+	cursor: pointer;
+	border-radius: 4px;
+	margin-bottom: 4px; /* Optional: adds a little space between items */
+	transition: background-color 0.1s ease-in-out; /* Smooth hover transition */
+	outline: none; /* remove default focus ring */
+	transition: background-color 0.2s ease, color 0.2s ease; /* smoother */
+}
 
-If your plugin does not need CSS, delete this file.
+.selectable-modal .selectable-item:hover {
+	background-color: var(--background-modifier-hover);
+}
 
-*/
+.selectable-modal .selectable-item:focus {
+	outline: none;
+}
+
+.selectable-modal .selectable-item.is-focused {
+	background-color: var(--background-modifier-hover);
+	/* color: var(--text-accent);
+	font-weight: bold;  */
+}
+
+.selectable-modal h4 {
+	margin-top: 0; /* Adjust modal title margin if needed */
+	margin-bottom: 15px;
+}
