@@ -1,8 +1,6 @@
 # Jump Topic Note
 
-![Obsidian Version](https://img.shields.io/badge/Obsidian-1.0%2B-blue.svg)  
-![Release Date](https://img.shields.io/badge/Released-May%2028%2C%202025-green.svg)  
-![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)
+![Obsidian Version](https://img.shields.io/badge/Obsidian-1.0%2B-blue.svg) ![Release Date](https://img.shields.io/badge/Released-May%2028%2C%202025-green.svg) ![License](https://img.shields.io/badge/License-GPL--3.0-blue.svg)
 
 ![demo](https://github.com/jaewonE/jump-topic-note/blob/master/assets/demo.gif?raw=true)
 
